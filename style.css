@@ -1,0 +1,37 @@
+body{
+    text-align: center;
+}
+.btn{
+    height: 200px;
+    width: 200px;
+    border-radius: 20%;
+    border : 10px solid black;
+    margin: 3rem;
+    /* transition: background-color 0.5s; Add transition effect */
+
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+#orange{
+    background-color: #FFA500;
+}
+
+#red{
+    background-color: #FF0000;
+}
+
+#blue{
+    background-color: #0000FF;
+}
+
+#purple{
+    background-color: #e100ff;
+}
+.flash{
+    background-color: white !important;
+}
+.userflash {
+    background-color: green !important;
+}
