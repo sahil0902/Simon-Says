@@ -7,8 +7,13 @@ let btns = ["orange","red","blue","purple"];
 let started = false;
 let level = 0;
 let counter = 0;
-
+let highestScore = 0;
+let gamecounter = 0;
 let h2 = document.querySelector("h2");
+let body = document.querySelector("body");
+let scores = document.querySelector("h4");
+
+
 
 
 document.addEventListener("keypress", function() {
@@ -37,8 +42,14 @@ function reset(){
   
         started = false;
         level = 0;
+        score = 0;
+        
         userSeq = [];
         gameSeq = [];
+        if (gamecounter > 1) {
+            highestScore = score;
+            score.innerText = `Score:${score}\nHighest Score:${highestScore}`;
+        }
       
 
 }
@@ -60,19 +71,41 @@ function levelUp(){
 }
 
 function seqCheck(index){
-    
-    console.log(`${level}`);
-    // let index = level-1;
-    if (userSeq[index]== gameSeq[index]) {
-        score++;
-       if(userSeq.length == gameSeq.length){
-        setTimeout(levelUp,1000);
-       }
-    }
-    else {
-        h2.innerText = `Game Over at level ${level}\nScore\t${score}...Press any key to start`;
-        reset();
-    }
+        
+        console.log(`${level}`);
+        // let index = level-1;
+        if (userSeq[index] == gameSeq[index]) {
+                score++;
+                scores.innerText = `Score:${score}`;
+                if (userSeq.length == gameSeq.length) {
+                        setTimeout(levelUp, 1000);
+                }
+        }
+        else {
+                gamecounter++;
+                h2.innerText = `Game Over at level ${level}\nScore\t${score}...Press any key to start`;
+                let h3 = document.createElement("h3");
+                h3.classList.add("results");
+                h2.appendChild(h3);
+                h3.innerHTML = `<table>
+                <tr>
+                    <th style="color: #0000FF;">Correct Sequence</th>
+                    <th style="color: #008000;">Your Sequence</th>
+                </tr>
+                <tr>
+                    <td style="color: #0000FF;">${gameSeq}</td>
+                    <td style="color: #008000;">${userSeq}</td>
+                </tr>
+            </table>
+            
+            `;
+                body.style.backgroundColor = "#FF0000";
+                setTimeout(() => {
+                        body.style.backgroundColor = "";
+                }, 1000);
+                reset();
+               
+        }
 }
 function btnPress(){
     let btn = this;
