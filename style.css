@@ -126,7 +126,7 @@ body {
 
 /* Media Queries for iPhone 12 */
 @media only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) {
-<<<<<<< HEAD
+
     .button{
         position: absolute;
         right:10%;
@@ -187,14 +187,14 @@ body {
         -moz-border-radius: 5px;
         border-radius: 5px;
       }
-=======
+
     .btn-container {
         margin-left: 31%;
     }
     .btn {
         margin: 2rem;
     }
->>>>>>> f3ea1429429c035832c9d7ff7b894f6edd2b8e65
+
 }
 
 /* Media Queries for iPhone 14 Pro */
