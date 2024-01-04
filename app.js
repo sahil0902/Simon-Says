@@ -22,6 +22,7 @@ document.addEventListener("keypress", function() {
         levelUp();
     }
 });
+<<<<<<< HEAD
     stButton.addEventListener("click", function() {
         if (!started) {
             stButton.style.display = "none";
@@ -30,6 +31,15 @@ document.addEventListener("keypress", function() {
             levelUp();
         }
     });
+=======
+document.addEventListener("touchstart", function() {
+    if (!started) {
+        console.log("Started!");
+        started = true;
+        levelUp();
+    }
+});
+>>>>>>> f3ea1429429c035832c9d7ff7b894f6edd2b8e65
 
 function btnFlash(btn){
     btn.classList.add("flash");
