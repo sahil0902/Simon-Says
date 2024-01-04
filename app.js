@@ -12,18 +12,24 @@ let gamecounter = 0;
 let h2 = document.querySelector("h2");
 let body = document.querySelector("body");
 let scores = document.querySelector("h4");
-
-
-
+let stButton = document.querySelector("#st");
 
 document.addEventListener("keypress", function() {
     if (!started) {
+        
         console.log("Started!");
         started = true;
         levelUp();
     }
 });
-
+    stButton.addEventListener("click", function() {
+        if (!started) {
+            stButton.style.display = "none";
+            console.log("Started!");
+            started = true;
+            levelUp();
+        }
+    });
 
 function btnFlash(btn){
     btn.classList.add("flash");
@@ -43,7 +49,7 @@ function reset(){
         started = false;
         level = 0;
         score = 0;
-        
+        stButton.style.display = "inline";
         userSeq = [];
         gameSeq = [];
         if (gamecounter > 1) {
