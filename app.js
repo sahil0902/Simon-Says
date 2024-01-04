@@ -23,7 +23,13 @@ document.addEventListener("keypress", function() {
         levelUp();
     }
 });
-
+document.addEventListener("touchstart", function() {
+    if (!started) {
+        console.log("Started!");
+        started = true;
+        levelUp();
+    }
+});
 
 function btnFlash(btn){
     btn.classList.add("flash");
