@@ -201,9 +201,11 @@ body {
 }
 
 /* Media Queries for iPhone 14 Pro */
-@media only screen and (min-width: 393px) and (min-height: 852px) and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  /* Add your styles for iPhone 14 Pro here */
  
       .btn-container {
+        font-size: 0.5rem;
         margin-left: 20% ;
         margin-top: 10%;
     }
