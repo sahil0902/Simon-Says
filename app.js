@@ -14,6 +14,7 @@ let body = document.querySelector("body");
 let scores = document.querySelector("h4");
 let stButton = document.querySelector(".wrapper");
 
+
 document.addEventListener("keypress", function() {
     if (!started) {
         
@@ -46,6 +47,19 @@ function UserbtnFlash(btn){
     btn.classList.remove("userflash");
     },1000);
 }
+function playSound(color) {
+    console.log("Playing sound for color:", color); // Debug line
+    const soundId = color + 'Sound'; // This will now correctly create IDs like 'blueSound'
+    const sound = document.getElementById(soundId);
+    if (sound) {
+        sound.volume = 1; // Set volume
+        sound.muted = false; // Ensure not muted
+        sound.play().catch(e => console.error("Error playing sound:", e));
+    } else {
+        console.error("Sound element not found for color:", color);
+    }
+}
+
 function reset(){
   
         started = false;
@@ -75,6 +89,7 @@ function levelUp(){
  let randbtn = document.querySelector(`#${randColor}`);
  console.log(randbtn);
  btnFlash(randbtn);
+ playSound(randColor);
  
 }
 
