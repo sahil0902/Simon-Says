@@ -2,17 +2,23 @@ let gameSeq = [];
 let userSeq = [];
 let score = 0;
 
+
 let btns = ["orange","red","blue","purple"];
 
 let started = false;
 let level = 0;
 let counter = 0;
-let highestScore = 0;
+let highestScore = [];
 let gamecounter = 0;
+let max = 0;
 let h2 = document.querySelector("h2");
 let body = document.querySelector("body");
 let scores = document.querySelector("h4");
 let stButton = document.querySelector(".wrapper");
+let USeq  = document.querySelector("#ut");
+let CSeq = document.querySelector("#ct");
+let colBoxes = document.querySelector(".btn-container")
+
 
 
 document.addEventListener("keypress", function() {
@@ -25,8 +31,12 @@ document.addEventListener("keypress", function() {
 });
 
     stButton.addEventListener("click", function() {
+       
         if (!started) {
             stButton.style.display = "none";
+          
+            CSeq.classList.remove("ct");
+            USeq.classList.remove("ut");
             console.log("Started!");
             started = true;
             levelUp();
@@ -65,13 +75,10 @@ function reset(){
         started = false;
         level = 0;
         score = 0;
-        stButton.style.display = "inline";
+        stButton.style.display = "block";
         userSeq = [];
         gameSeq = [];
-        if (gamecounter > 1) {
-            highestScore = score;
-            score.innerText = `Score:${score}\nHighest Score:${highestScore}`;
-        }
+       
       
 
 }
@@ -106,21 +113,28 @@ function seqCheck(index){
     }
     else {
         gamecounter++;
+        console.log(gamecounter);
+        if(gamecounter>0){
+            highestScore.push(score);
+            console.log(highestScore);
+            // for(let i = 0 ; i < highestScore.length ; i++){
+            //     max = Math.max(highestScore[i]);
+            // }
+            for(hs of highestScore){
+                max =Math.max(hs);
+            }
+        }
+        
+       
+        console.log("Highest:",max);
         h2.innerText = `Game Over at level ${level}\nScore\t${score}...Press any key to start`;
-        let h3 = document.createElement("h3");
-        h3.classList.add("results");
-        h2.appendChild(h3);
-        h3.innerHTML = `<table>
-            <tr>
-                <th style="color: #0000FF;">Correct Sequence</th>
-                <th style="color: #008000;">Your Sequence</th>
-            </tr>
-            <tr>
-                <td style="color: #0000FF;">${gameSeq}</td>
-                <td style="color: #008000;">${userSeq}</td>
-            </tr>
-        </table>`;
-        body.style.backgroundColor = "#FF0000";
+        USeq.classList.add("ut");
+        CSeq.classList.add("ct");
+        let UserSelection = userSeq.join('->');
+        let CorrectSelection = gameSeq.join('->')
+        USeq.innerText = `Your Sequence :${UserSelection}`;
+        CSeq.innerHTML = `Correct Sequence:${CorrectSelection}`;
+        stButton.classList.add("stButton");
         setTimeout(() => {
             body.style.backgroundColor = "";
         }, 1000);
@@ -147,6 +161,12 @@ function handleMediaQueryChange(mediaQuery) {
     }
 }
 
+
+ 
+
+   
+
+
 // Call the function on initial load
 handleMediaQueryChange(mediaQuery);
 
@@ -162,6 +182,9 @@ function btnPress(){
     UserbtnFlash(btn);
     userSeq.push(UserColor);
     seqCheck(userSeq.length-1);
+    if(gamecounter){
+        scores.innerHTML =`Score:${score}\t\tGames Played:${gamecounter}\t\tHighest Score:${max}`;
+    }
 }
 
 let allBtns = document.querySelectorAll(".btn");

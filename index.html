@@ -20,7 +20,9 @@
         
     <h1>Simon Says</h1>
     <h2 class="text-center">Press Press  any key to start</h2>
-    <h4>Score:</h4>
+    <h4 id="scorecard">Score:</h4>
+    <h6 id="ct">Correct Sequence</h6>
+    <h6 id="ut">Your Sequence</h6>
 </div>
 <div class="btn-container">
 <div class="line-one">
@@ -31,10 +33,12 @@
 <div class="line-two">
     <div  class="btn" id = "purple"></div>
     <div  class="btn" id = "blue"></div>
-    <div class="wrapper">
-        <a href="#"><span>Start</span></a>
-      </div>
+    
 </div>
+
+<div class="wrapper">
+    <a href="#"><span>Start</span></a>
+  </div>
 <div class="sounds">
     <audio id="blueSound" src="./audios/blue.wav" preload="auto"></audio>
     <audio id="orangeSound" src="./audios/orange.wav" preload="auto"></audio>

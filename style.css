@@ -17,6 +17,30 @@ body {
 h1, h2, h4 {
   color: #333;
 }
+h6{
+  display: none;
+}
+.ut{
+  display: inline-flex;
+  color: #FE5F55 ;
+  text-decoration: underline;
+}
+.ct {
+  display: block;
+   color: #55917F;
+   text-decoration: dotted;
+}
+.colboxes {
+  margin-bottom: 10px;
+}
+
+.stButton {
+  margin-top: 10px;
+}
+#scorecard{
+  background-color: antiquewhite;
+  border: 1px solid black;
+}
 
 /* Button Styles */
 .btn {
