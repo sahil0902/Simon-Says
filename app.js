@@ -12,7 +12,7 @@ let gamecounter = 0;
 let h2 = document.querySelector("h2");
 let body = document.querySelector("body");
 let scores = document.querySelector("h4");
-let stButton = document.querySelector("#st");
+let stButton = document.querySelector(".wrapper");
 
 document.addEventListener("keypress", function() {
     if (!started) {
@@ -80,41 +80,66 @@ function levelUp(){
 
 function seqCheck(index){
         
-        console.log(`${level}`);
-        // let index = level-1;
-        if (userSeq[index] == gameSeq[index]) {
-                score++;
-                scores.innerText = `Score:${score}`;
-                if (userSeq.length == gameSeq.length) {
-                        setTimeout(levelUp, 1000);
-                }
+    console.log(`${level}`);
+    // let index = level-1;
+    if (userSeq[index] == gameSeq[index]) {
+        score++;
+        scores.innerText = `Score:${score}`;
+        if (userSeq.length == gameSeq.length) {
+            setTimeout(levelUp, 1000);
         }
-        else {
-                gamecounter++;
-                h2.innerText = `Game Over at level ${level}\nScore\t${score}...Press any key to start`;
-                let h3 = document.createElement("h3");
-                h3.classList.add("results");
-                h2.appendChild(h3);
-                h3.innerHTML = `<table>
-                <tr>
-                    <th style="color: #0000FF;">Correct Sequence</th>
-                    <th style="color: #008000;">Your Sequence</th>
-                </tr>
-                <tr>
-                    <td style="color: #0000FF;">${gameSeq}</td>
-                    <td style="color: #008000;">${userSeq}</td>
-                </tr>
-            </table>
-            
-            `;
-                body.style.backgroundColor = "#FF0000";
-                setTimeout(() => {
-                        body.style.backgroundColor = "";
-                }, 1000);
-                reset();
-               
-        }
+    }
+    else {
+        gamecounter++;
+        h2.innerText = `Game Over at level ${level}\nScore\t${score}...Press any key to start`;
+        let h3 = document.createElement("h3");
+        h3.classList.add("results");
+        h2.appendChild(h3);
+        h3.innerHTML = `<table>
+            <tr>
+                <th style="color: #0000FF;">Correct Sequence</th>
+                <th style="color: #008000;">Your Sequence</th>
+            </tr>
+            <tr>
+                <td style="color: #0000FF;">${gameSeq}</td>
+                <td style="color: #008000;">${userSeq}</td>
+            </tr>
+        </table>`;
+        body.style.backgroundColor = "#FF0000";
+        setTimeout(() => {
+            body.style.backgroundColor = "";
+        }, 1000);
+        reset();
+    }
 }
+
+// Add CSS media queries for responsiveness
+const mediaQuery = window.matchMedia("(max-width: 600px)");
+
+function handleMediaQueryChange(mediaQuery) {
+    if (mediaQuery.matches) {
+        // Apply responsive styles for small screens
+        h2.style.fontSize = "16px";
+        scores.style.fontSize = "14px";
+    } else if (mediaQuery.matches && mediaQuery.orientation === "portrait") {
+        // Apply responsive styles for portrait orientation
+        h2.style.fontSize = "18px";
+        scores.style.fontSize = "16px";
+    } else {
+        // Apply default styles for larger screens and landscape orientation
+        h2.style.fontSize = "24px";
+        scores.style.fontSize = "18px";
+    }
+}
+
+// Call the function on initial load
+handleMediaQueryChange(mediaQuery);
+
+// Listen for media query changes
+mediaQuery.addListener(handleMediaQueryChange);
+
+// Listen for media query changes
+mediaQuery.addListener(handleMediaQueryChange);
 function btnPress(){
     let btn = this;
     let UserColor = btn.getAttribute("id");
