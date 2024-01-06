@@ -187,13 +187,21 @@ mediaQuery.addListener(handleMediaQueryChange);
 mediaQuery.addListener(handleMediaQueryChange);
 
 function btnPress() {
-    let btn = this;
-    let UserColor = btn.getAttribute("id");
-    console.log(UserColor);
-    UserbtnFlash(btn);
-    userSeq.push(UserColor);
-    seqCheck(userSeq.length - 1);
-    if (gamecounter) {
-        scores.innerHTML = `Score:${score}\t\tGames Played:${gamecounter}\t\tHighest Score:${max}`;
+    if (started == false) {
+        if (window.matchMedia("(max-width: 600px)").matches) {
+            alert("Press Start Button to start again 😀");
+        } else {
+            alert("Press any key to start again 😀");
+        }
+    } else {
+        let btn = this;
+        let UserColor = btn.getAttribute("id");
+        console.log(UserColor);
+        UserbtnFlash(btn);
+        userSeq.push(UserColor);
+        seqCheck(userSeq.length - 1);
+        if (gamecounter > 1) {
+            scores.innerHTML = `Score:${score}\t\tGames Played:${gamecounter}\t\tHighest Score:${max}`;
+        }
     }
 }
