@@ -45,8 +45,14 @@ h1, h2, h4 {
   transform: scale(1.1); /* Slightly enlarge button on hover */
 }
 
-.btn:active {
+.btn:active, .btn.touch-active {
   transform: scale(0.9); /* Shrink button on click */
+}
+
+@media (hover: none) {
+  .btn.touch-active {
+    transform: scale(1); /* Reset scale on touch devices */
+  }
 }
 
 /* Flash Animation */
