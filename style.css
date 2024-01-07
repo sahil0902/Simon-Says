@@ -35,7 +35,7 @@ h6{
 }
 
 .stButton {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 #scorecard{
   background-color: antiquewhite;
@@ -43,7 +43,7 @@ h6{
   
 }
 
-/* Button Styles */
+/* Boxes Styles */
 .btn {
   display: inline-block;
   height: 100px; 
@@ -170,6 +170,9 @@ a:hover:after{
       font-size: 16px;
       line-height: 60px;
       
+  }
+  .wrapper{
+    margin-top: 60%;
   }
 
   h1, h2, h4 {
