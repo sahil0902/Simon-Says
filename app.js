@@ -131,9 +131,7 @@ function seqCheck(index) {
             // for(let i = 0 ; i < highestScore.length ; i++){
             //     max = Math.max(highestScore[i]);
             // }
-            for (hs of highestScore) {
-                max = Math.max(hs);
-            }
+            max = Math.max(...highestScore);
         }
 
 
