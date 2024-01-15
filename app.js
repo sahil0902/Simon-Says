@@ -31,6 +31,10 @@ document.addEventListener("keypress", function() {
             btn.addEventListener("click", btnPress);
         }
         levelUp();
+        CSeq.classList.remove("ct");
+        USeq.classList.remove("ut");
+        console.log("Started!");
+        started = true;
     }
 
 });
@@ -44,12 +48,12 @@ stButton.addEventListener("click", function() {
             btn.addEventListener("click", btnPress);
         }
         stButton.style.display = "none";
-
+        levelUp();
         CSeq.classList.remove("ct");
         USeq.classList.remove("ut");
         console.log("Started!");
         started = true;
-        levelUp();
+   
     }
 });
 
@@ -178,11 +182,7 @@ function handleMediaQueryChange(mediaQuery) {
 // Call the function on initial load
 handleMediaQueryChange(mediaQuery);
 
-// Listen for media query changes
-mediaQuery.addListener(handleMediaQueryChange);
 
-// Listen for media query changes
-mediaQuery.addListener(handleMediaQueryChange);
 
 function btnPress() {
     if (started == false) {
