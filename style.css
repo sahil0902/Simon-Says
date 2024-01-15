@@ -8,6 +8,7 @@ body {
   box-sizing: border-box;
 }
 
+
 .container {
   max-width: 960px;
   margin: auto;
@@ -45,6 +46,7 @@ h6{
 
 /* Boxes Styles */
 .btn {
+
   display: inline-block;
   height: 100px; 
   width: 100px; 
