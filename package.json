@@ -1,0 +1,11 @@
+{
+  "name": "game",
+  "version": "1.0.0",
+  "description": "Simon Says is a classic memory skill game that challenges players to keep up with an increasing sequence of lights. This project is a webbased version that allows you to play the game just using your web browser.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
